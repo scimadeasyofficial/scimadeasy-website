@@ -1,0 +1,120 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Calibri;
+}
+
+p {
+    font-family: Calibri;
+    font-size: 20px;
+    color: black;
+    margin-left: 5%;
+    margin-right: 5%;
+    text-align: center;
+}
+
+/* 
+ * Note: This file path is provided for reference purposes only.
+ * The content or styles defined here are not actively used in the project.
+ * It is retained solely for archival or informational purposes.
+ */
+/*.background {
+    background: linear-gradient(to right, #ff7e5f, #feb47b);
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+*/
+
+.Entry_website {
+    display: inline-block;
+    font-size: 50px;
+    color: black;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    background: linear-gradient(255, 255, 255, 1);
+    padding: 0px;
+    border-radius: 5px;
+    position: relative;
+}
+
+.table-of-contents {
+    font-size: 1.5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.table-of-contents ul {
+    list-style: none;
+    display: flex;
+    gap: 100px;
+    margin: 0;
+}
+
+.table-of-contents li {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.table-of-contents a {
+    text-decoration: none;
+    color: inherit; /* Keeps the link color consistent with the page's theme */
+}
+
+.table-of-contents a:hover {
+    text-decoration:pointer; /* Adds a hover effect for better user experience */
+}
+
+.About_us {
+    padding: 10px;
+}
+
+.title_section {
+    font-size: 30px;
+    color: #2F5597;
+    text-align: center;"
+    margin-top: 5px;
+}
+
+.video-container {
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.team-members {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.team-member img {
+    width: 150px;
+    max-width: 100%;
+    border-radius: 10px;
+    display: block;
+    margin: 0 auto 10px auto;
+}
+
+.social-media-links {
+    font-size: 1.5em;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.contact_suggestions {
+    font-size: 1.5em;
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
