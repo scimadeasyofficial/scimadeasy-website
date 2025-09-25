@@ -56,9 +56,17 @@ Science can often seem intimidating or out of reach, but we believe it does not 
             Our work / <strong>Videos</strong>
         </h2>
 
+        <!-- Filter Bar -->
+        <div class="filter-bar" style="text-align:center; margin-bottom:20px;">
+            <button class="filter-btn" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="biology">Biology</button>
+            <button class="filter-btn" data-filter="chemistry">Chemistry</button>
+            <button class="filter-btn" data-filter="math">Math</button>
+        </div>
+
         <!-- Video Section -->
-        <div class="video-section"></div>
-            <div class="video-container">
+        <div class="video-section">
+            <div class="video-container" data-category="biology">
                 <a href="https://youtu.be/3bVgtbSTMEI" target="_blank">
                     <img src="pictures/video_thumbnail.png" alt="Video Thumbnail" style="width:100%;">
                 </a>
@@ -68,7 +76,7 @@ Science can often seem intimidating or out of reach, but we believe it does not 
                     </a>
                 </p>
             </div>
-            <div class="video-container">
+            <div class="video-container" data-category="chemistry">
                 <a href="https://youtu.be/A6jowoGyqxw" target="_blank">
                     <img src="pictures/video_thumbnail.png" alt="Video Thumbnail" style="width:100%;">
                 </a>
@@ -78,7 +86,7 @@ Science can often seem intimidating or out of reach, but we believe it does not 
                     </a>
                 </p>
             </div>
-            <div class="video-container">
+            <div class="video-container" data-category="math">
                 <a href="https://youtu.be/NsNn6MsfwAk" target="_blank">
                     <img src="pictures/video_thumbnail.png" alt="Video Thumbnail" style="width:100%;">
                 </a>
@@ -141,7 +149,7 @@ Science can often seem intimidating or out of reach, but we believe it does not 
     <div id="section4">
             <h2 class="title_section">Wishes for the upcoming videos</h2>
             <div style="text-align: center;">
-                <p>We are open to wishes from your side! Please send us your ideas and feedback. We strive from your suggestions. Test
+                <p>We are open to wishes from your side! Please send us your ideas and feedback. We strive from your suggestions.
                     <br>
                     Still in progress. For now, contact us via email
                 </p>
@@ -156,7 +164,5 @@ Science can often seem intimidating or out of reach, but we believe it does not 
 	<p>Contact us at scimadeasy.official@gmail.com. Write us an email with your feedback and suggestions</p>
     </div>
 </body>
-
+    <script src="scripts/videoFilter.js"></script>
 </html>
-
-

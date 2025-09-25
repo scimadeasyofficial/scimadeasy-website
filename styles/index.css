@@ -1,3 +1,55 @@
+/* Fancy button styles for all buttons */
+button, .button, .filter-bar .filter-btn {
+    padding: 10px 24px;
+    margin: 0 8px;
+    border: none;
+    border-radius: 25px;
+    background: #e3f0ff;
+    color: #1a3a6b;
+    font-weight: bold;
+    font-size: 1rem;
+    box-shadow: 0 2px 8px rgba(180, 199, 231, 0.2);
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+}
+
+button:hover, .button:hover, .filter-bar .filter-btn:hover {
+    background: #b4c7e7;
+    color: #fff;
+    box-shadow: 0 4px 16px rgba(180, 199, 231, 0.3);
+}
+
+button.active, .button.active, .filter-bar .filter-btn.active {
+    background: #1a3a6b;
+    color: #fff;
+    box-shadow: 0 4px 16px rgba(26, 58, 107, 0.3);
+}
+/* Fancy filter buttons */
+.filter-bar .filter-btn {
+    padding: 10px 24px;
+    margin: 0 8px;
+    border: none;
+    border-radius: 25px;
+    background: #e3f0ff;
+    color: #1a3a6b;
+    font-weight: bold;
+    font-size: 1rem;
+    box-shadow: 0 2px 8px rgba(180, 199, 231, 0.2);
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+}
+
+.filter-bar .filter-btn:hover {
+    background: #b4c7e7;
+    color: #fff;
+    box-shadow: 0 4px 16px rgba(180, 199, 231, 0.3);
+}
+
+.filter-bar .filter-btn.active {
+    background: #1a3a6b;
+    color: #fff;
+    box-shadow: 0 4px 16px rgba(26, 58, 107, 0.3);
+}
 body, html {
     height: 100%;
     margin: 0;
@@ -76,7 +128,7 @@ p {
 .title_section {
     font-size: 30px;
     color: #2F5597;
-    text-align: center;"
+    text-align: center;
     margin-top: 5px;
 }
 
