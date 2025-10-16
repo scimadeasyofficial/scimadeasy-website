@@ -1,4 +1,20 @@
-/* Fancy button styles for all buttons */
+/* Enhanced SciMadEasy Styles */
+
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #e3f0ff 0%, #B4C7E7 100%);
+    min-height: 100vh;
+}
+
+/* Button Styles */
 button, .button, .filter-bar .filter-btn {
     padding: 10px 24px;
     margin: 0 8px;
@@ -24,151 +40,190 @@ button.active, .button.active, .filter-bar .filter-btn.active {
     color: #fff;
     box-shadow: 0 4px 16px rgba(26, 58, 107, 0.3);
 }
-/* Fancy filter buttons */
-.filter-bar .filter-btn {
-    padding: 10px 24px;
-    margin: 0 8px;
-    border: none;
-    border-radius: 25px;
-    background: #e3f0ff;
-    color: #1a3a6b;
-    font-weight: bold;
-    font-size: 1rem;
-    box-shadow: 0 2px 8px rgba(180, 199, 231, 0.2);
-    cursor: pointer;
-    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
-}
 
-.filter-bar .filter-btn:hover {
-    background: #b4c7e7;
-    color: #fff;
-    box-shadow: 0 4px 16px rgba(180, 199, 231, 0.3);
-}
-
-.filter-bar .filter-btn.active {
-    background: #1a3a6b;
-    color: #fff;
-    box-shadow: 0 4px 16px rgba(26, 58, 107, 0.3);
-}
-body, html {
-    height: 100%;
-    margin: 0;
-    font-family: Calibri;
-}
-
-p {
-    font-family: Calibri;
-    font-size: 20px;
-    color: black;
-    margin-left: 5%;
-    margin-right: 5%;
-    text-align: center;
-}
-
-/* 
- * Note: This file path is provided for reference purposes only.
- * The content or styles defined here are not actively used in the project.
- * It is retained solely for archival or informational purposes.
- */
-/*.background {
-    background: linear-gradient(to right, #ff7e5f, #feb47b);
-    height: 10%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-*/
-
+/* Header/Logo Section */
 .Entry_website {
-    display: inline-block;
-    font-size: 50px;
-    color: black;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     text-align: center;
-    background: linear-gradient(255, 255, 255, 1);
-    padding: 0px;
-    border-radius: 5px;
-    position: relative;
+    padding: 40px 20px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    margin-bottom: 30px;
 }
 
+.Entry_website img {
+    width: 25%;
+    max-width: 300px;
+    min-width: 200px;
+    opacity: 0.95;
+    transition: transform 0.3s ease;
+}
+
+.Entry_website img:hover {
+    transform: scale(1.05);
+}
+
+/* Navigation */
 .table-of-contents {
-    font-size: 1.5em;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    margin: 0 20px 30px 20px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    padding: 20px;
 }
 
 .table-of-contents ul {
     list-style: none;
     display: flex;
-    gap: 100px;
-    margin: 0;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
 }
 
 .table-of-contents li {
-    margin-top: 5px;
-    margin-bottom: 5px;
+    margin: 0;
 }
 
 .table-of-contents a {
+    display: block;
+    padding: 12px 25px;
+    background: linear-gradient(135deg, #e3f0ff 0%, #f8faff 100%);
+    color: #1a3a6b;
     text-decoration: none;
-    color: inherit; /* Keeps the link color consistent with the page's theme */
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(26, 58, 107, 0.1);
 }
 
 .table-of-contents a:hover {
-    text-decoration:pointer; /* Adds a hover effect for better user experience */
+    background: linear-gradient(135deg, #1a3a6b 0%, #2F5597 100%);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(26, 58, 107, 0.3);
 }
 
-.About_us {
-    padding: 10px;
+/* Section Containers */
+.content-section,
+.About_us,
+#section3,
+#section4,
+.Follow_us,
+.Contact {
+    background: rgba(255, 255, 255, 0.95);
+    margin: 30px 20px;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
 }
 
+/* Typography */
 .title_section {
-    font-size: 30px;
-    color: #2F5597;
+    color: #1a3a6b;
+    font-size: 2.5em;
     text-align: center;
-    margin-top: 5px;
+    margin-bottom: 20px;
+    font-weight: 700;
 }
 
-.video-container {
-    display: inline-block;
-    justify-content: center;
-    align-items: center;
-    margin-left: 10px;
+p {
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    color: #2F5597;
+    line-height: 1.6;
+    text-align: center;
+    margin: 20px auto;
+    max-width: 800px;
 }
 
+/* Dividers */
+hr {
+    border: none;
+    height: 2px;
+    background: linear-gradient(90deg, transparent 0%, #B4C7E7 50%, transparent 100%);
+    margin: 40px 0;
+}
+
+/* Team Section */
 .team-members {
     display: flex;
     justify-content: center;
     gap: 40px;
     flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.team-member {
+    background: rgba(255, 255, 255, 0.7);
+    padding: 25px;
+    border-radius: 15px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.team-member:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
 .team-member img {
     width: 150px;
-    max-width: 100%;
-    border-radius: 10px;
-    display: block;
-    margin: 0 auto 10px auto;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border: 4px solid #e3f0ff;
+    transition: border-color 0.3s ease;
 }
 
+.team-member:hover img {
+    border-color: #1a3a6b;
+}
+
+.team-member p {
+    color: #1a3a6b;
+    font-weight: 600;
+    margin: 0;
+}
+
+/* Social Media Links */
 .social-media-links {
-    font-size: 1.5em;
+    list-style: none;
     display: flex;
-    gap: 20px;
     justify-content: center;
-    align-items: center;
-    margin: 20px 0;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-top: 30px;
 }
 
-.contact_suggestions {
-    font-size: 1.5em;
-    display: inline-block;
-    justify-content: center;
+.social-media-links li {
+    margin: 0;
+}
+
+.social-media-links a {
+    display: flex;
     align-items: center;
-    margin-top: 20px;
+    gap: 10px;
+    padding: 15px 25px;
+    background: linear-gradient(135deg, #e3f0ff 0%, #f8faff 100%);
+    color: #1a3a6b;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(26, 58, 107, 0.1);
+}
+
+.social-media-links a:hover {
+    background: linear-gradient(135deg, #1a3a6b 0%, #2F5597 100%);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(26, 58, 107, 0.3);
 }
 
 /* Video Grid Styles */
@@ -283,6 +338,40 @@ p {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    .content-section,
+    .About_us,
+    #section3,
+    #section4,
+    .Follow_us,
+    .Contact {
+        margin: 20px 10px;
+        padding: 25px;
+    }
+    
+    .title_section {
+        font-size: 2em;
+    }
+    
+    .table-of-contents ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .team-members {
+        gap: 20px;
+    }
+    
+    .team-member img {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .social-media-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+    
     .video-section {
         grid-template-columns: 1fr;
         gap: 15px;
@@ -303,11 +392,33 @@ p {
 }
 
 @media (max-width: 480px) {
+    .Entry_website img {
+        width: 60%;
+    }
+    
+    .content-section,
+    .About_us,
+    #section3,
+    #section4,
+    .Follow_us,
+    .Contact {
+        margin: 15px 5px;
+        padding: 20px;
+    }
+    
+    .title_section {
+        font-size: 1.8em;
+    }
+    
+    p {
+        font-size: 16px;
+    }
+    
     .video-info {
         padding: 12px;
     }
     
-    .load-more-btn {
+    .load-more-btn, .show-less-btn {
         padding: 12px 25px;
         font-size: 14px;
     }
