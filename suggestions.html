@@ -4,39 +4,373 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="We are open to suggestions! Please send us your ideas and feedback.">
-    <title>Suggestions</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f4f4f4;
-        }
-        .container {
-            text-align: center;
-            background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        textarea {
-            width: 100%;
-            max-width: 400px;
-        }
-    </style>
+    <title>SciMadEasy - Suggestions</title>
+    <link rel="stylesheet" href="styles/suggestions.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 <body>
+    <a href="index.html" class="back-link">← Back to Main Site</a>
+    
+    <div class="header">
+        <img src="pictures/Logo.png" alt="SciMadEasy Logo" class="logo">
+    </div>
+
     <div class="container">
-        <p>We are open to suggestions! Please send us your ideas and feedback.</p>
-        <form action="submit_suggestion.php" method="post">
-            <label for="suggestion">Your Suggestion:</label><br>
-            <textarea id="suggestion" name="suggestion" rows="4" cols="50"></textarea><br><br>
-            <input type="submit" value="Submit">
+        <h1 class="title">Share Your Ideas</h1>
+        <p class="subtitle">
+            We value your input! Help us create the content you want to see by sharing your suggestions, 
+            feedback, and ideas for future videos.
+        </p>
+
+        <div id="success-message" class="success-message">
+            <h3>🎉 Thank you for your suggestion!</h3>
+            <p>We've received your feedback and will review it carefully. Your input helps us create better content!</p>
+        </div>
+
+        <form id="suggestion-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+            <div class="form-group">
+                <label for="name">Your Name <span class="required">*</span></label>
+                <input type="text" id="name" name="name" required>
+                <div class="error-message" id="name-error">Please enter your name</div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address <span class="required">*</span></label>
+                <input type="email" id="email" name="email" required>
+                <div class="error-message" id="email-error">Please enter a valid email address</div>
+            </div>
+
+            <div class="form-group">
+                <label for="suggestion">Your Suggestion <span class="required">*</span></label>
+                <textarea id="suggestion" name="suggestion" 
+                    placeholder="Tell us about your idea, feedback, or suggestion for future content..." 
+                    required></textarea>
+                <div class="error-message" id="suggestion-error">Please share your suggestion</div>
+            </div>
+
+            <button type="submit" class="submit-btn" id="submit-btn">
+                Submit Suggestion
+            </button>
         </form>
     </div>
+
+    <script>
+        class SuggestionForm {
+            constructor() {
+                this.form = document.getElementById('suggestion-form');
+                this.submitBtn = document.getElementById('submit-btn');
+                this.successMessage = document.getElementById('success-message');
+                this.isSubmitting = false;
+                
+                this.init();
+            }
+
+            init() {
+                this.setupEventListeners();
+                this.setupRealTimeValidation();
+            }
+
+            setupEventListeners() {
+                this.form.addEventListener('submit', (e) => this.handleSubmit(e));
+                
+                // Add "Another Suggestion" button after successful submission
+                this.createAnotherSuggestionButton();
+            }
+
+            setupRealTimeValidation() {
+                const inputs = this.form.querySelectorAll('input, textarea');
+                
+                inputs.forEach(input => {
+                    input.addEventListener('blur', () => this.validateField(input));
+                    input.addEventListener('input', () => this.clearError(input));
+                });
+            }
+
+            validateField(field) {
+                const value = field.value.trim();
+                const fieldId = field.id;
+                let isValid = true;
+                let errorMessage = '';
+
+                // Clear previous error
+                this.clearError(field);
+
+                switch(fieldId) {
+                    case 'name':
+                        if (!value) {
+                            errorMessage = 'Please enter your name';
+                            isValid = false;
+                        } else if (value.length < 2) {
+                            errorMessage = 'Name must be at least 2 characters';
+                            isValid = false;
+                        }
+                        break;
+                        
+                    case 'email':
+                        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                        if (!value) {
+                            errorMessage = 'Please enter your email address';
+                            isValid = false;
+                        } else if (!emailRegex.test(value)) {
+                            errorMessage = 'Please enter a valid email address';
+                            isValid = false;
+                        }
+                        break;
+                        
+                    case 'suggestion':
+                        if (!value) {
+                            errorMessage = 'Please share your suggestion';
+                            isValid = false;
+                        } else if (value.length < 10) {
+                            errorMessage = 'Please provide more details (at least 10 characters)';
+                            isValid = false;
+                        }
+                        break;
+                }
+
+                if (!isValid) {
+                    this.showError(field, errorMessage);
+                }
+
+                return isValid;
+            }
+
+            showError(field, message) {
+                const errorElement = document.getElementById(`${field.id}-error`);
+                if (errorElement) {
+                    errorElement.textContent = message;
+                    errorElement.style.display = 'block';
+                    field.style.borderColor = '#e74c3c';
+                }
+            }
+
+            clearError(field) {
+                const errorElement = document.getElementById(`${field.id}-error`);
+                if (errorElement) {
+                    errorElement.style.display = 'none';
+                    field.style.borderColor = '#e3f0ff';
+                }
+            }
+
+            validateForm() {
+                const requiredFields = this.form.querySelectorAll('[required]');
+                let isFormValid = true;
+
+                requiredFields.forEach(field => {
+                    if (!this.validateField(field)) {
+                        isFormValid = false;
+                    }
+                });
+
+                return isFormValid;
+            }
+
+            async handleSubmit(e) {
+                e.preventDefault();
+                
+                if (this.isSubmitting) return;
+
+                if (!this.validateForm()) {
+                    this.showFormError('Please fix the errors above before submitting.');
+                    return;
+                }
+
+                await this.submitForm();
+            }
+
+            async submitForm() {
+                this.isSubmitting = true;
+                this.setLoadingState(true);
+
+                try {
+                    const formData = new FormData(this.form);
+                    const data = {
+                        name: formData.get('name'),
+                        email: formData.get('email'),
+                        suggestion: formData.get('suggestion'),
+                        timestamp: new Date().toLocaleString(),
+                        page_url: window.location.href
+                    };
+                    
+                    // Send email using EmailJS
+                    await this.sendEmailJS(data);
+                    
+                    // Store locally as backup
+                    this.storeLocalBackup(data);
+                    
+                    this.showSuccess();
+                    
+                } catch (error) {
+                    console.error('Submission error:', error);
+                    this.showFormError('Something went wrong sending your suggestion. Please try again or contact us directly at scimadeasy.official@gmail.com');
+                } finally {
+                    this.isSubmitting = false;
+                    this.setLoadingState(false);
+                }
+            }
+
+            async sendEmailJS(data) {
+                // EmailJS configuration - you'll need to replace these with your actual values
+                const serviceID = 'service_n6rtg5v';
+                const templateID = 'template_tmckyk8';
+                const publicKey = '4SalMgr6L9R38Kusn';
+
+                console.log('Sending email with:', { serviceID, templateID, publicKey });
+
+                const templateParams = {
+                    from_name: data.name,
+                    from_email: data.email,
+                    message: data.suggestion,
+                    timestamp: data.timestamp,
+                    reply_to: data.email
+                };
+
+                console.log('Template params:', templateParams);
+
+                return emailjs.send(serviceID, templateID, templateParams, publicKey);
+            }
+
+            storeLocalBackup(data) {
+                try {
+                    const submissions = JSON.parse(localStorage.getItem('suggestions') || '[]');
+                    submissions.push(data);
+                    localStorage.setItem('suggestions', JSON.stringify(submissions));
+                } catch (error) {
+                    console.warn('Could not store local backup:', error);
+                }
+            }
+
+            setLoadingState(isLoading) {
+                if (isLoading) {
+                    this.submitBtn.innerHTML = '⏳ Submitting...';
+                    this.submitBtn.disabled = true;
+                    this.submitBtn.style.opacity = '0.7';
+                } else {
+                    this.submitBtn.innerHTML = 'Submit Suggestion';
+                    this.submitBtn.disabled = false;
+                    this.submitBtn.style.opacity = '1';
+                }
+            }
+
+            showSuccess() {
+                this.successMessage.style.display = 'block';
+                this.form.style.display = 'none';
+                
+                // Smooth scroll to success message
+                this.successMessage.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'center'
+                });
+
+                // Show confetti effect (optional)
+                this.showConfetti();
+            }
+
+            showConfetti() {
+                // Simple confetti effect
+                const colors = ['#1a3a6b', '#2F5597', '#B4C7E7', '#e3f0ff'];
+                
+                for (let i = 0; i < 50; i++) {
+                    setTimeout(() => {
+                        const confetti = document.createElement('div');
+                        confetti.style.cssText = `
+                            position: fixed;
+                            top: -10px;
+                            left: ${Math.random() * 100}%;
+                            width: 10px;
+                            height: 10px;
+                            background: ${colors[Math.floor(Math.random() * colors.length)]};
+                            border-radius: 50%;
+                            pointer-events: none;
+                            animation: confetti-fall 3s linear forwards;
+                            z-index: 1000;
+                        `;
+                        
+                        document.body.appendChild(confetti);
+                        
+                        setTimeout(() => confetti.remove(), 3000);
+                    }, i * 50);
+                }
+            }
+
+            showFormError(message) {
+                // Create or update error message at top of form
+                let errorDiv = document.getElementById('form-error');
+                if (!errorDiv) {
+                    errorDiv = document.createElement('div');
+                    errorDiv.id = 'form-error';
+                    errorDiv.style.cssText = `
+                        background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+                        color: white;
+                        padding: 15px;
+                        border-radius: 10px;
+                        margin-bottom: 20px;
+                        text-align: center;
+                        animation: slideIn 0.3s ease-out;
+                    `;
+                    this.form.insertBefore(errorDiv, this.form.firstChild);
+                }
+                
+                errorDiv.textContent = message;
+                errorDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+
+            createAnotherSuggestionButton() {
+                const anotherBtn = document.createElement('button');
+                anotherBtn.innerHTML = '💡 Submit Another Suggestion';
+                anotherBtn.className = 'submit-btn';
+                anotherBtn.style.cssText = `
+                    background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+                    margin-top: 15px;
+                `;
+                
+                anotherBtn.addEventListener('click', () => {
+                    this.resetForm();
+                });
+                
+                this.successMessage.appendChild(anotherBtn);
+            }
+
+            resetForm() {
+                this.form.reset();
+                this.form.style.display = 'block';
+                this.successMessage.style.display = 'none';
+                
+                // Clear all errors
+                this.form.querySelectorAll('.error-message').forEach(error => {
+                    error.style.display = 'none';
+                });
+                
+                // Reset field styles
+                this.form.querySelectorAll('input, textarea').forEach(field => {
+                    field.style.borderColor = '#e3f0ff';
+                });
+                
+                // Remove form error if exists
+                const formError = document.getElementById('form-error');
+                if (formError) formError.remove();
+                
+                // Focus on first field
+                this.form.querySelector('input').focus();
+            }
+        }
+
+        // Add confetti animation CSS
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes confetti-fall {
+                to {
+                    transform: translateY(100vh) rotate(360deg);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Initialize when DOM is ready
+        document.addEventListener('DOMContentLoaded', () => {
+            new SuggestionForm();
+        });
+    </script>
 </body>
 </html>
