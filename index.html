@@ -64,41 +64,103 @@ Science can often seem intimidating or out of reach, but we believe it does not 
             <button class="filter-btn" data-filter="math">Math</button>
         </div>
 
-        <!-- Video Section -->
-        <div class="video-section">
+        <!-- Video Section with Grid Layout -->
+        <div class="video-section" id="video-grid">
             <div class="video-container" data-category="biology">
-                <a href="https://youtu.be/3bVgtbSTMEI" target="_blank">
-                    <img src="pictures/video_thumbnail.png" alt="Video Thumbnail" style="width:100%;">
-                </a>
-                <p style="margin-left: 30px;">
+                <div class="video-thumbnail">
                     <a href="https://youtu.be/3bVgtbSTMEI" target="_blank">
-                        Biology Ep.1 - Cell Division
+                        <img src="pictures/video_thumbnail.png" alt="Video Thumbnail">
                     </a>
-                </p>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">
+                        <a href="https://youtu.be/3bVgtbSTMEI" target="_blank">
+                            Biology Ep.1 - Cell Division
+                        </a>
+                    </h3>
+                </div>
             </div>
+            
             <div class="video-container" data-category="chemistry">
-                <a href="https://youtu.be/A6jowoGyqxw" target="_blank">
-                    <img src="pictures/video_thumbnail.png" alt="Video Thumbnail" style="width:100%;">
-                </a>
-                <p style="margin-left: 30px;">
+                <div class="video-thumbnail">
                     <a href="https://youtu.be/A6jowoGyqxw" target="_blank">
-                        Chemistry Ep.1 - Atoms
+                        <img src="pictures/video_thumbnail.png" alt="Video Thumbnail">
                     </a>
-                </p>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">
+                        <a href="https://youtu.be/A6jowoGyqxw" target="_blank">
+                            Chemistry Ep.1 - Atoms
+                        </a>
+                    </h3>
+                </div>
             </div>
+            
             <div class="video-container" data-category="math">
-                <a href="https://youtu.be/NsNn6MsfwAk" target="_blank">
-                    <img src="pictures/video_thumbnail.png" alt="Video Thumbnail" style="width:100%;">
-                </a>
-                <p style="margin-left: 30px;">
+                <div class="video-thumbnail">
                     <a href="https://youtu.be/NsNn6MsfwAk" target="_blank">
-                        Math Ep.1 - Integers
+                        <img src="pictures/video_thumbnail.png" alt="Video Thumbnail">
                     </a>
-                </p>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">
+                        <a href="https://youtu.be/NsNn6MsfwAk" target="_blank">
+                            Math Ep.1 - Integers
+                        </a>
+                    </h3>
+                </div>
+            </div>
+            
+            <!-- Hidden videos that will be shown when "Load More" is clicked -->
+            <div class="video-container hidden-video" data-category="biology">
+                <div class="video-thumbnail">
+                    <a href="https://youtu.be/example4" target="_blank">
+                        <img src="pictures/video_thumbnail.png" alt="Video Thumbnail">
+                    </a>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">
+                        <a href="https://youtu.be/example4" target="_blank">
+                            Biology Ep.2 - DNA Structure
+                        </a>
+                    </h3>
+                </div>
+            </div>
+            
+            <div class="video-container hidden-video" data-category="chemistry">
+                <div class="video-thumbnail">
+                    <a href="https://youtu.be/example5" target="_blank">
+                        <img src="pictures/video_thumbnail.png" alt="Video Thumbnail">
+                    </a>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">
+                        <a href="https://youtu.be/example5" target="_blank">
+                            Chemistry Ep.2 - Molecules
+                        </a>
+                    </h3>
+                </div>
+            </div>
+            
+            <div class="video-container hidden-video" data-category="math">
+                <div class="video-thumbnail">
+                    <a href="https://youtu.be/example6" target="_blank">
+                        <img src="pictures/video_thumbnail.png" alt="Video Thumbnail">
+                    </a>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">
+                        <a href="https://youtu.be/example6" target="_blank">
+                            Math Ep.2 - Fractions
+                        </a>
+                    </h3>
+                </div>
             </div>
         </div>
+        
         <div style="text-align: center; margin-top: 30px;">
-            <button onclick="alert('Load more videos functionality not implemented yet!')">View More</button>
+            <button id="load-more-btn" class="load-more-btn">Load More Videos</button>
+            <button id="show-less-btn" class="show-less-btn" style="display: none;">Show Less Videos</button>
         </div>
         
     </div>
@@ -165,4 +227,5 @@ Science can often seem intimidating or out of reach, but we believe it does not 
     </div>
 </body>
     <script src="scripts/videoFilter.js"></script>
+    <script src="scripts/loadMoreVideos.js"></script>
 </html>
